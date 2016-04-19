@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+lit | reset password
+@endsection
+
 <!-- Main Content -->
 @section('content')
 <div class="container">
