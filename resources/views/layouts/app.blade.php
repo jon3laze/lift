@@ -40,7 +40,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <strong>l</strong><sup><i class="fa fa-fire"></i></sup><strong>t</strong>
+                    <strong>l</strong><sup><i class="fa fa-fire"></i></sup><strong>ft</strong>
                 </a>
             </div>
 
