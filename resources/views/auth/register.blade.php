@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-lit | register
+lift | register
 @endsection
 
 @section('content')

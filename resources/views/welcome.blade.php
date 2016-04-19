@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+lift | welcome
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row">

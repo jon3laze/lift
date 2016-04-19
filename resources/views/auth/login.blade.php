@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-lit | login
+lift | login
 @endsection
 
 @section('content')

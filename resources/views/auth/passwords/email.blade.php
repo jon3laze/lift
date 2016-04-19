@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-lit | reset password
+lift | reset password
 @endsection
 
 <!-- Main Content -->
