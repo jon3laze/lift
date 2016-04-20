@@ -72,6 +72,30 @@
         </div>
     </nav>
 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <ul class="nav nav-tabs">
+                    @foreach($tetriminos as $tetrimino)
+                        <li role="presentation" class="{{Request::path() == $tetrimino->name ? 'active' : ''}}">
+                            <a href="/{{$tetrimino->name}}">
+                                <i class="fa {{$tetrimino->icon}}" aria-hidden="true"></i>
+                                {{$tetrimino->name}}
+                            </a>
+                        </li>
+                    @endforeach
+                    <li role="presentation">
+                        <a href="#">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <br />
+
     @yield('content')
 
     <!-- JavaScripts -->

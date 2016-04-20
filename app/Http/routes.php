@@ -11,10 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
+
+Route::get('/insol', 'HomeController@index');
+Route::get('/paysol', 'HomeController@index');
 
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/{tetrimino}', 'HomeController@tetrimino');
