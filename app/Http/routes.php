@@ -10,14 +10,11 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-Route::get('/', 'HomeController@index');
-
-Route::get('/insol', 'HomeController@index');
-Route::get('/paysol', 'HomeController@index');
-
-Route::auth();
-
-Route::get('/home', 'HomeController@index');
-
-Route::get('/{tetrimino}', 'HomeController@tetrimino');
+Route::group(['middleware' => 'web'], function() {
+	Route::auth();
+	
+	Route::get('/profile', 'DashboardController@profile');
+	Route::get('/settings', 'DashboardController@settings');
+	Route::get('/', 'DashboardController@index');
+	Route::get('/{tetrimino}', 'DashboardController@tetrimino');
+});

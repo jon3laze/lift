@@ -46,9 +46,6 @@
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
-                </ul>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
@@ -63,6 +60,7 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ url('/profile') }}"><i class="fa fa-btn fa-user"></i>Profile</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>
@@ -77,6 +75,11 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <ul class="nav nav-tabs">
+                    <li role="presentation" class="{{Request::path() == '/' ? 'active' : ''}}">
+                        <a href="/">
+                            <i class="fa fa-home" aria-hidden="true"></i>
+                        </a>
+                    </li>
                     @foreach($tetriminos as $tetrimino)
                         <li role="presentation" class="{{Request::path() == $tetrimino->name ? 'active' : ''}}">
                             <a href="/{{$tetrimino->name}}">
@@ -85,9 +88,9 @@
                             </a>
                         </li>
                     @endforeach
-                    <li role="presentation">
-                        <a href="#">
-                            <i class="fa fa-plus" aria-hidden="true"></i>
+                    <li role="presentation" class="{{Request::path() == 'settings' ? 'active' : ''}}">
+                        <a href="{{ url('/settings') }}">
+                            <i class="fa fa-cog" aria-hidden="true"></i>
                         </a>
                     </li>
                 </ul>
