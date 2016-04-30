@@ -16,5 +16,5 @@ Route::group(['middleware' => 'web'], function() {
 	Route::get('/profile', 'DashboardController@profile');
 	Route::get('/settings', 'DashboardController@settings');
 	Route::get('/', 'DashboardController@index');
-	Route::get('/{mod}', 'DashboardController@modules');
+	Route::get('/{modules}', 'DashboardController@modules');
 });
