@@ -27,8 +27,8 @@ lift | settings
                             @endcan
                         </span>
                     @endforeach
-                    <hr>
                     @can('user_create')
+                        <hr>
                         <span>
                             <a class="btn btn-default" href="#">
                                 <i class="fa fa-plus" title="Add User" aria-hidden="true"></i>
