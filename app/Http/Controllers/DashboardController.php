@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Tetrimino;
+use App\Module;
 use App\User;
 
 
@@ -29,38 +29,38 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $tetriminos = Tetrimino::all();
-        return view('dashboard')->with('tetriminos', $tetriminos);
+        $modules = Module::all();
+        return view('dashboard')->with('modules', $modules);
     }
 
-    public function tetrimino($name) 
+    public function modules($name) 
     {  
-    	$tetriminos = Tetrimino::all();
+    	$modules = Module::all();
 
-    	if(Tetrimino::where('name', $name)->first()) {
+    	if(Module::where('name', $name)->first()) {
     		if(view()->exists($name)) {
-    			return view($name)->with('tetriminos', $tetriminos);
+    			return view($name)->with('modules', $modules);
 	    	} elseif(view()->exists($name.'.index')) {
-	    		return view($name.'.index')->with('tetriminos', $tetriminos);
+	    		return view($name.'.index')->with('modules', $modules);
 	    	} elseif(view()->exists('modules.'.$name.'.index')) {
-	    		return view('modules.'.$name.'.index')->with('tetriminos', $tetriminos);
+	    		return view('modules.'.$name.'.index')->with('modules', $modules);
 	    	}
     	} elseif(in_array($name, ['profile', 'settings'])) {
-    		return view($name)->with('tetriminos', $tetriminos);
+    		return view($name)->with('modules', $modules);
     	}
-        return view('errors.404')->with('tetriminos', $tetriminos);
+        return view('errors.404')->with('modules', $modules);
     }
 
     public function profile() 
     {
-    	$tetriminos = Tetrimino::all();
-        return view('profile')->with('tetriminos', $tetriminos);
+    	$modules = Module::all();
+        return view('profile')->with('modules', $modules);
     }
 
     public function settings()
     {
     	$users = User::all();
-    	$tetriminos = Tetrimino::all();
-    	return view('settings')->with('tetriminos', $tetriminos)->with('users', $users);
+    	$modules = Module::all();
+    	return view('settings')->with('modules', $modules)->with('users', $users);
     }
 }

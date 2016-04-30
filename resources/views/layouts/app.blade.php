@@ -80,11 +80,11 @@
                             <i class="fa fa-home" aria-hidden="true"></i>
                         </a>
                     </li>
-                    @foreach($tetriminos as $tetrimino)
-                        <li role="presentation" class="{{Request::path() == $tetrimino->name ? 'active' : ''}}">
-                            <a href="/{{$tetrimino->name}}">
-                                <i class="fa {{$tetrimino->icon}}" aria-hidden="true"></i>
-                                {{$tetrimino->name}}
+                    @foreach($modules as $modules)
+                        <li role="presentation" class="{{Request::path() == $modules->name ? 'active' : ''}}">
+                            <a href="/{{$modules->name}}">
+                                <i class="fa {{$modules->icon}}" aria-hidden="true"></i>
+                                {{$modules->name}}
                             </a>
                         </li>
                     @endforeach
