@@ -15,18 +15,20 @@ lift | settings
 			</ul>
             <div class="well center-block">
                 <div class="table-responsive center-block">
-                    @foreach($users as $user)
-                        <span>
-                            <i class="fa fa-user fa-fw"></i>
-                            {{ $user->name }}
-                            @can('user_edit')
-                                    <a class="btn btn-default" href="#">
-                                        <i class="fa fa-pencil" title="Edit" aria-hidden="true"></i>
-                                        <span class="sr-only">Edit</span>
-                                    </a>
-                            @endcan
-                        </span>
-                    @endforeach
+                    @can('user_view')
+                        @foreach($users as $user)
+                            <span>
+                                <i class="fa fa-user fa-fw"></i>
+                                {{ $user->name }}
+                                @can('user_edit')
+                                        <a class="btn btn-default" href="#">
+                                            <i class="fa fa-pencil" title="Edit" aria-hidden="true"></i>
+                                            <span class="sr-only">Edit</span>
+                                        </a>
+                                @endcan
+                            </span>
+                        @endforeach
+                    @endcan
                     @can('user_create')
                         <hr>
                         <span>
