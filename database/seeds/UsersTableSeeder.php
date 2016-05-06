@@ -16,6 +16,16 @@ class UsersTableSeeder extends Seeder
         		'name' => 'Adam Savage',
             	'email' => 'admin@test.com',
             	'password' => bcrypt('password'),
+            ],
+            [
+                'name' => 'Ted Savage',
+                'email' => 'tech@test.com',
+                'password' => bcrypt('password'),
+            ],
+            [
+                'name' => 'Indiana Savage',
+                'email' => 'installer@test.com',
+                'password' => bcrypt('password'),
             ]
         );
     }
