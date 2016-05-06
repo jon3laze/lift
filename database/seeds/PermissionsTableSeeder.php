@@ -11,7 +11,7 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('permissions')->insert(
+        DB::table('permissions')->insert(array(
         	[
         		'name' => 'user_view',
             	'label' => 'View Users',
@@ -28,6 +28,6 @@ class PermissionsTableSeeder extends Seeder
         		'name' => 'user_delete',
             	'label' => 'Delete Users',
             ]
-        );
+        ));
     }
 }

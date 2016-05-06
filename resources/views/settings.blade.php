@@ -15,29 +15,34 @@ lift | settings
 			</ul>
             <div class="well center-block">
                 <div class="table-responsive center-block">
-                    @can('user_view')
-                        @foreach($users as $user)
-                            <span>
-                                <i class="fa fa-user fa-fw"></i>
-                                {{ $user->name }}
-                                @can('user_edit')
-                                        <a class="btn btn-default" href="#">
-                                            <i class="fa fa-pencil" title="Edit" aria-hidden="true"></i>
-                                            <span class="sr-only">Edit</span>
-                                        </a>
-                                @endcan
-                            </span>
-                        @endforeach
-                    @endcan
-                    @can('user_create')
-                        <hr>
-                        <span>
-                            <a class="btn btn-default" href="#">
-                                <i class="fa fa-plus" title="Add User" aria-hidden="true"></i>
-                                <span class="sr-only">Add User</span>
-                            </a>
-                        </span>
-                    @endcan
+                    <div class="center-block">
+                        @can('user_view')
+                            <ul class="list-group">
+                                @foreach($users as $user)
+                                    <li class="list-group-item clearfix">
+                                        <i class="fa fa-user fa-fw"></i>
+                                        {{ $user->name }}
+
+                                        @can('user_edit')
+                                            <button class="btn btn-default pull-right" href="#">
+                                                <i class="fa fa-pencil fa-fw" title="Edit" aria-hidden="true"></i>
+                                            </button>
+                                        @endcan
+                                    </li>
+                                @endforeach
+                                <li class="list-group-item well clearfix">
+                                    <i class="fa fa-user-plus fa-fw"></i>
+                                    New User
+
+                                    @can('user_create')
+                                        <button class="btn btn-default pull-right" href="#">
+                                            <i class="fa fa-plus fa-fw" title="Add" aria-hidden="true"></i>
+                                        </button>
+                                    @endcan
+                                </li>
+                            </ul>
+                        @endcan
+                    </div>
                 </div>
             </div>
         </div>

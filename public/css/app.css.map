@@ -1,1 +1,1 @@
-{"version":3,"sources":["app.css"],"names":[],"mappings":"AAAA","file":"app.css","sourceRoot":"/source/","sourcesContent":[]}
+{"version":3,"sources":["app.scss"],"names":[],"mappings":"AAAA;;EAEE","file":"app.css","sourcesContent":["/*\n\tLIFT STYLES\n*/\n\n// @import \"node_modules/bootstrap-sass/assets/stylesheets/bootstrap\";"],"sourceRoot":"/source/"}

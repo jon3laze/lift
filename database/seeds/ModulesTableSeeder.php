@@ -11,7 +11,7 @@ class ModulesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('modules')->insert(
+        DB::table('modules')->insert(array(
         	[
         		'name' => 'insol',
             	'label' => 'Inventory Solution',
@@ -22,6 +22,6 @@ class ModulesTableSeeder extends Seeder
             	'label' => 'Payment Solution',
             	'icon' => 'fa-credit-card',
             ]
-        );
+        ));
     }
 }
