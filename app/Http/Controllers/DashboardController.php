@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Module;
+use App\Permission;
+use App\Role;
 use App\User;
 
 
@@ -59,8 +61,14 @@ class DashboardController extends Controller
 
     public function settings()
     {
-    	$users = User::all();
+    	$users = User::orderBy('name', 'ASC')->paginate(10, ['*'], 'u');
+        $roles = Role::orderBy('name', 'ASC')->paginate(5, ['*'], 'r');
+        $permissions = Permission::orderBy('name', 'ASC')->paginate(10, ['*'], 'p');
     	$modules = Module::all();
-    	return view('settings')->with('modules', $modules)->with('users', $users);
+    	return view('settings')
+            ->with('modules', $modules)
+            ->with('users', $users)
+            ->with('roles', $roles)
+            ->with('permissions', $permissions);
     }
 }

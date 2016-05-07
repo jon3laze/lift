@@ -11,17 +11,18 @@ class ModulesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('modules')->insert(array(
-        	[
-        		'name' => 'insol',
-            	'label' => 'Inventory Solution',
-            	'icon' => 'fa-database',
+        $moduleSeeds = array(
+            [
+                'name' => 'insol',
+                'label' => 'Inventory Solution',
+                'icon' => 'fa-database',
             ],
             [
-            	'name' => 'paysol',
-            	'label' => 'Payment Solution',
-            	'icon' => 'fa-credit-card',
+                'name' => 'paysol',
+                'label' => 'Payment Solution',
+                'icon' => 'fa-credit-card',
             ]
-        ));
+        );
+        DB::table('modules')->insert($moduleSeeds);
     }
 }

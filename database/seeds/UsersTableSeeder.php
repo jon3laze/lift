@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
+use Faker\Factory as Faker;
+
 class UsersTableSeeder extends Seeder
 {
     /**
@@ -11,11 +13,11 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert(array(
-        	[
-        		'name' => 'Adam Savage',
-            	'email' => 'admin@test.com',
-            	'password' => bcrypt('password'),
+        $userSeeds = array(
+            [
+                'name' => 'Adam Savage',
+                'email' => 'admin@test.com',
+                'password' => bcrypt('password'),
             ],
             [
                 'name' => 'Ted Savage',
@@ -27,6 +29,11 @@ class UsersTableSeeder extends Seeder
                 'email' => 'installer@test.com',
                 'password' => bcrypt('password'),
             ]
-        ));
+        );
+        $faker = Faker::create();
+        for($i=0; $i<15; $i++) {
+            array_push($userSeeds, ['name' => $faker->name, 'email' => $faker->email, 'password' => bcrypt($faker->password)]);
+        }
+        DB::table('users')->insert($userSeeds);
     }
 }

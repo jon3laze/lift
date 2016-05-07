@@ -11,23 +11,24 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('roles')->insert(array(
-        	[
-        		'name' => 'root',
-            	'label' => 'Super Admin',
+        $roleSeeds = array(
+            [
+                'name' => 'root',
+                'label' => 'Super Admin',
             ],
             [
-        		'name' => 'admin',
-            	'label' => 'Administrator',
+                'name' => 'admin',
+                'label' => 'Administrator',
             ],
             [
-        		'name' => 'manager',
-            	'label' => 'Manager',
+                'name' => 'manager',
+                'label' => 'Manager',
             ],
             [
-        		'name' => 'user',
-            	'label' => 'User',
+                'name' => 'user',
+                'label' => 'User',
             ]
-        ));
+        );
+        DB::table('roles')->insert($roleSeeds);
     }
 }
