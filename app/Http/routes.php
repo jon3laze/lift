@@ -10,11 +10,13 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::group(['middleware' => 'web'], function() {
-	Route::auth();
-	
-	Route::get('/profile', 'DashboardController@profile');
+Route::auth();
+Route::group(['middleware' => 'web'], function() {	
+	Route::get('/profile', 'ProfileController@show');
+	Route::get('/profile/edit', 'ProfileController@edit');
 	Route::get('/settings', 'DashboardController@settings');
 	Route::get('/', 'DashboardController@index');
 	Route::get('/{modules}', 'DashboardController@modules');
 });
+
+
