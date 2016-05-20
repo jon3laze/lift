@@ -10,6 +10,7 @@ use App\Module;
 use App\Permission;
 use App\Role;
 use App\User;
+use Auth;
 
 
 class DashboardController extends Controller
@@ -53,11 +54,7 @@ class DashboardController extends Controller
         return view('errors.404')->with('modules', $modules);
     }
 
-    public function profile() 
-    {
-    	$modules = Module::all();
-        return view('profile')->with('modules', $modules);
-    }
+    
 
     public function settings()
     {

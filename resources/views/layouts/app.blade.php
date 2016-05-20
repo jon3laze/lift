@@ -102,6 +102,21 @@
 @endif
     @yield('content')
 
+    @if($errors->has())
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="well alert alert-danger" role="alert">
+                        <ul class="fa-ul">
+                            @foreach($errors->all() as $error)
+                                <li><i class="fa-li fa fa-exclamation-triangle fa-fw"></i> {{ $error }} </li>
+                            @endforeach
+                        </ul>
+                </div>
+            </div>
+        </div>
+    @endif
+
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>

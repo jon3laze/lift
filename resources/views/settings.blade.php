@@ -97,8 +97,10 @@ lift | settings
                                             <li class="list-group-item clearfix list-group-item-success">
                                         @elseif(explode('_', $permission->name)[1] == 'delete')
                                             <li class="list-group-item clearfix list-group-item-danger">
+                                        @elseif(explode('_', $permission->name)[1] == 'edit')
+                                            <li class="list-group-item clearfix list-group-item-warning">
                                         @else
-                                            <li class="list-group-item clearfix list-group-item-primary"
+                                            <li class="list-group-item clearfix list-group-item-info">
                                         @endif
                                             <i class="fa fa-lock fa-fw"></i>
                                             {{ $permission->name }}
