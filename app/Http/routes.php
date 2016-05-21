@@ -12,8 +12,7 @@
 */
 Route::auth();
 Route::group(['middleware' => 'web'], function() {	
-	Route::get('/profile', 'ProfileController@show');
-	Route::get('/profile/edit', 'ProfileController@edit');
+	Route::resource('profile', 'ProfileController');
 	Route::get('/settings', 'DashboardController@settings');
 	Route::get('/', 'DashboardController@index');
 	Route::get('/{modules}', 'DashboardController@modules');

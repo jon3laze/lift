@@ -26,7 +26,7 @@ lift | profile
                 </div>
                 <hr>
                 <div>
-                	<span class="text-muted"><a class="btn btn-link btn-sm" href="{{ url('/profile/edit') }}"><i class="fa fa-pencil fa-2x"></i></a><br><small>edit</small></span>
+                	<span class="text-muted"><a class="btn btn-link btn-sm" href="{{ route('profile.edit', $user->id) }}"><i class="fa fa-pencil fa-2x"></i></a><br><small>edit</small></span>
                 </div>
             </div>
         </div>
