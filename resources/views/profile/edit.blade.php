@@ -16,9 +16,9 @@ lift | profile
                     <div class="col-md-6 col-md-offset-5">
                         @foreach($photos as $photo)
                             @if($photo->active)
-                                <img src="{{ URL::to('/').$photo->thumb_path }}" class="img-thumbnail" />
+                                <img src="{{ URL::to('/').$photo->thumb_path }}" class="img-thumbnail pull-left" />
                             @else
-                                <img src="{{ URL::to('/').$photo->thumb_path }}" class="img-rounded" />
+                                <img src="{{ URL::to('/').$photo->thumb_path }}" class="img-circle" />
                             @endif
 
                         @endforeach
@@ -78,6 +78,9 @@ lift | profile
                     <div class="col-md-6 col-md-offset-6 text-muted">
                         <button type="submit" class="btn btn-link btn-sm">
                             <i class="fa fa-floppy-o fa-2x"></i><br><small>save</small>
+                        </button>
+                        <button type="cancel" class="btn btn-link btn-sm">
+                            <i class="fa fa-ban fa-2x"></i><br><small>cancel</small>
                         </button>
                     </div>
                 </div>

@@ -58,9 +58,9 @@ class DashboardController extends Controller
 
     public function settings()
     {
-    	$users = User::orderBy('name', 'ASC')->paginate(10, ['*'], 'u');
-        $roles = Role::orderBy('name', 'ASC')->paginate(5, ['*'], 'r');
-        $permissions = Permission::orderBy('name', 'ASC')->paginate(10, ['*'], 'p');
+        $users = User::orderBy('created_at', 'DESC')->paginate(5);
+        $roles = Role::orderBy('name', 'ASC')->paginate(5);
+        $permissions = Permission::orderBy('name', 'ASC')->paginate(5);
     	$modules = Module::all();
     	return view('settings')
             ->with('modules', $modules)
