@@ -67,15 +67,14 @@ class ProfileController extends Controller
     {
     	$modules = Module::all();
         $user = User::find(Auth::id());
-        $photo = Photo::where([
-            ['user_id', '=', $user->id], 
-            ['active', '1']
+        $photos = Photo::where([
+            ['user_id', '=', $user->id]
         ])->get();
         $role = $user->roles()->get()[0];
         return view('profile.edit')
         ->with('modules', $modules)
         ->with('user', $user)
-        ->with('photo', $photo)
+        ->with('photos', $photos)
         ->with('role', $role);;
     }
 
@@ -94,12 +93,12 @@ class ProfileController extends Controller
                 ->file('photo')
                 ->getRealPath()
             )
-            ->resize(300, null, function($constraint) {
+            ->resize(150, null, function($constraint) {
                 $constraint->aspectRatio();
             })
             ->save($directory.$full_name);
             $thumbnail = Image::make($image)
-            ->resize(150, null, function($constraint) {
+            ->resize(50, null, function($constraint) {
                 $constraint->aspectRatio();
             })
             ->save($directory.$thumb_name);
