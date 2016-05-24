@@ -26,7 +26,7 @@ lift | profile
                 </div>
                 <hr>
                 <div>
-                	<p>{{ $role->label }}</p>
+                	<p class="text-muted">{{ $role->label }}</p>
                 </div>
                 <hr>
                 <div>

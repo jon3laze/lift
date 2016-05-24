@@ -13,6 +13,7 @@
 Route::auth();
 Route::group(['middleware' => 'web'], function() {	
 	Route::resource('profile', 'ProfileController');
+	Route::resource('user', 'UserController');
 	Route::get('/settings', 'DashboardController@settings');
 	Route::get('/', 'DashboardController@index');
 	Route::get('/{modules}', 'DashboardController@modules');

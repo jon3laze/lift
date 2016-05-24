@@ -9,16 +9,16 @@ lift | settings
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="col-md-4 well">
-                <button type="button" class="btn btn-link btn-lg btn-block">
+                <a href="{{ route('user.index') }}" class="btn btn-link btn-lg btn-block">
                     <i class="fa fa-fw fa-user"></i><br>users
-                </button>
+                </a>
                 <hr>
                 <ul class="fa-ul">
                     @foreach($users as $user)
                         <li><a href="user/{{ $user->id }}"><i class="fa fa-fw fa-user"></i> {{ $user->name }}</a></li>
                     @endforeach
                     <hr>
-                    <li class="pull-right"><a href="user/"><small><i class="fa fa-fw fa-users"></i> view all users</small></a></li>
+                    <li class="pull-right"><a href="{{ route('user.index') }}"><small><i class="fa fa-fw fa-users"></i> view all users</small></a></li>
                 </ul>
             </div>
             <div class="col-md-4 well">
