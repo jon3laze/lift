@@ -5,6 +5,7 @@
 Homestead.yaml
 Homestead.json
 npm-debug.log
+/public/uploads/*
 
 # Laravel 4 specific
 bootstrap/compiled.php
