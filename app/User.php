@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Photo;
 
 class User extends Authenticatable
 {
@@ -24,4 +25,26 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    protected $appends = ['photo'];
+
+    public function photos()
+    {
+        return $this->hasMany('App\Photo');
+    }
+
+    public function getPhotoAttribute()
+    {
+        if($this->photos->count() == 0)
+        {
+            $photo = [
+                'user_id' => $this->id,
+                'full_path' => '/uploads/'.'default.jpg',
+                'thumb_path' => '/uploads/'.'default_thumbnail.jpg'
+            ];
+        } else {
+            $photo = $this->photos->where('active')->get();
+        }
+        return $this->photos;
+    }
 }

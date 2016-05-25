@@ -26,40 +26,14 @@ class ProfileController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Show list of object
-     *
-     * @return $users
-     */
-    public function index() 
-    {
-    	$modules = Module::all();
-        $user = User::find(Auth::id());
-        $photo = Photo::where([
-            ['user_id', '=', $user->id], 
-            ['active', '1']
-        ])->get();
-        $role = $user->roles()->get()[0];
-        return view('profile.index')
-        ->with('modules', $modules)
-        ->with('user', $user)
-        ->with('photo', $photo)
-        ->with('role', $role);
-    }
-
     public function show() 
     {
     	$modules = Module::all();
         $user = User::find(Auth::id());
-        $photo = Photo::where([
-            ['user_id', '=', $user->id], 
-            ['active', '1']
-        ])->get();
         $role = $user->roles()->get()[0];
-        return view('profile.index')
+        return view('profile.show')
         ->with('modules', $modules)
         ->with('user', $user)
-        ->with('photo', $photo)
         ->with('role', $role);
     }
 
@@ -67,15 +41,11 @@ class ProfileController extends Controller
     {
     	$modules = Module::all();
         $user = User::find(Auth::id());
-        $photos = Photo::where([
-            ['user_id', '=', $user->id]
-        ])->get();
         $role = $user->roles()->get()[0];
         return view('profile.edit')
         ->with('modules', $modules)
         ->with('user', $user)
-        ->with('photos', $photos)
-        ->with('role', $role);;
+        ->with('role', $role);
     }
 
     public function update(Request $request)
@@ -115,6 +85,10 @@ class ProfileController extends Controller
             $photo->active = true;
             $photo->save();
         }
+        else 
+        {
+        	$photo = $user->photo;
+        }
     	
     	if($request->name !== $user->name) {
             $user->update(['name' => $request->name]);
@@ -130,15 +104,10 @@ class ProfileController extends Controller
         }
     	$modules = Module::all();
         $user = User::find(Auth::id());
-        $photo = Photo::where([
-            ['user_id', '=', $user->id], 
-            ['active', '1']
-        ])->get();
         $role = $user->roles()->get()[0];
         return view('profile.index')
         ->with('modules', $modules)
         ->with('user', $user)
-        ->with('photo', $photo)
         ->with('role', $role);
     }
 }

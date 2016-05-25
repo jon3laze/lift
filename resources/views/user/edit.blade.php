@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-lift | profile
+lift | $user->name
 @endsection
 
 @section('content')
@@ -9,16 +9,16 @@ lift | profile
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="well">
-                {!! Form::model($user, array('route' => array('profile.update', $user->id), 'files' => true, 'class' => 'form-horizontal')) !!}
+                {!! Form::model($user, array('route' => array('user.update', $user->id), 'files' => true, 'class' => 'form-horizontal')) !!}
                 {!! method_field('PATCH') !!}
 
                 <div class="form-group">
                     <div class="col-md-6 col-md-offset-5">
                         @if($user->photos->count() < 1) 
-                            <img src="/uploads/default.jpg" class="img-circle" />
-                        @else
-                            <img src="{{ $user->photos()->where('active', 1)->get()[0]->full_path }}" class="img-circle" />
-                        @endif
+							<img src="/uploads/default_thumbnail.jpg" class="img-circle" />
+						@else
+							<img src="{{ $user->photos()->where('active', 1)->get()[0]->thumb_path }}" class="img-circle" />
+						@endif
                     </div>
                 </div>
 
@@ -69,7 +69,7 @@ lift | profile
                         <button type="submit" class="btn btn-link btn-sm">
                             <i class="fa fa-floppy-o fa-2x"></i><br><small>save</small>
                         </button>
-                        <a class="btn btn-link btn-sm" href="{{ route('profile.show') }}">
+                        <a class="btn btn-link btn-sm" href="{{ route('user.show', $user->id) }}">
                             <i class="fa fa-ban fa-2x"></i><br><small>cancel</small>
                         </a>
                     </div>
