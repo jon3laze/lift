@@ -80,8 +80,7 @@ class UsersTableSeeder extends Seeder
         })->save($directory.'3/u3_thumbnail.jpg');
 
         $faker = Faker::create();
-        for($i=0; $i<49; $i++) {
-            $i = $i+4;
+        for($i=4; $i<52; $i++) {
             $full_name = '/u'.$i.date('m-d-Y_hia').'.jpg';
             $thumb_name = '/u'.$i.date('m-d-Y_hia').'_thumbnail.jpg';
             File::makeDirectory($directory.$i, 0755, true, false);
@@ -104,9 +103,8 @@ class UsersTableSeeder extends Seeder
                 array_push($photoSeeds, ['user_id' => $i, 'full_path' => '/uploads/'.$i.$full_name, 'thumb_path' => '/uploads/'.$i.$thumb_name, 'active' => 1]);
                 array_push($userSeeds, ['name' => $faker->name('male'), 'email' => $faker->email, 'password' => bcrypt($faker->password)]);
             }
-            $i=$i-4;
         }
-        DB::table('photos')->insert($photoSeeds);
         DB::table('users')->insert($userSeeds);
+        DB::table('photos')->insert($photoSeeds);
     }
 }
