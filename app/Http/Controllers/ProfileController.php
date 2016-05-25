@@ -26,17 +26,27 @@ class ProfileController extends Controller
         $this->middleware('auth');
     }
 
-    public function show() 
+    /**
+     * Show single user profile
+     *
+     * @return $user
+     */
+    public function index() 
     {
     	$modules = Module::all();
         $user = User::find(Auth::id());
         $role = $user->roles()->get()[0];
-        return view('profile.show')
+        return view('profile.index')
         ->with('modules', $modules)
         ->with('user', $user)
         ->with('role', $role);
     }
 
+    /**
+     * Edit single user profile
+     *
+     * @return $user
+     */
     public function edit()
     {
     	$modules = Module::all();
@@ -48,6 +58,11 @@ class ProfileController extends Controller
         ->with('role', $role);
     }
 
+    /**
+     * Update single user profile
+     *
+     * @return $user
+     */
     public function update(Request $request)
     {
         $user = User::find(Auth::id());

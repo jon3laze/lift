@@ -8,6 +8,9 @@ use App\Http\Requests;
 use App\Module;
 use App\Photo;
 use App\User;
+use Image;
+use File;
+use Auth;
 
 class UserController extends Controller
 {

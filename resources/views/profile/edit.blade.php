@@ -69,7 +69,7 @@ lift | profile
                         <button type="submit" class="btn btn-link btn-sm">
                             <i class="fa fa-floppy-o fa-2x"></i><br><small>save</small>
                         </button>
-                        <a class="btn btn-link btn-sm" href="{{ route('profile.show') }}">
+                        <a class="btn btn-link btn-sm" href="{{ route('profile.index') }}">
                             <i class="fa fa-ban fa-2x"></i><br><small>cancel</small>
                         </a>
                     </div>
