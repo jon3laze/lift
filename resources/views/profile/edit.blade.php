@@ -28,7 +28,7 @@ lift | profile
                 {!! method_field('PATCH') !!}
                 <table class="table table-condensed table-hover">
                     <tr class="form-group">
-                        <td class="text-center" colspan="3">
+                        <td class="text-center">
                             @if($user->photos->count() < 1) 
                                 <img src="/uploads/default.jpg" class="img-circle" />
                             @else
@@ -42,28 +42,52 @@ lift | profile
                         </td>
                     </tr>
                     <tr class="form-group">
-                        <td>picture</td>
-                        <td colspan="2">{!! Form::file('photo') !!}</td>
+                        <td>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-fw fa-camera"></i></div>
+                                {!! Form::file('photo') !!}
+                            </div>
+                        </td>
                     </tr>
                     <tr class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                        <td>name</td>
-                        <td colspan="2">{!! Form::text('name', $user->name, ['class' => 'form-control']) !!}</td>
+                        <td>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-fw fa-user"></i></div>
+                                {!! Form::text('name', $user->name, ['class' => 'form-control']) !!}
+                            </div>
+                        </td>
                     </tr>
                     <tr class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                        <td>email</td>
-                        <td colspan="2">{!! Form::email('email', $user->email, ['class' => 'form-control']) !!}</td>
+                        <td>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-fw fa-envelope"></i></div>
+                                {!! Form::email('email', $user->email, ['class' => 'form-control']) !!}
+                            </div>
+                        </td>
                     </tr>
                     <tr class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                        <td>password</td>
-                        <td colspan="2"><input type="password" class="form-control" name="password"></td>
+                        <td>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-fw fa-lock"></i></div>
+                                <input type="password" class="form-control" placeholder="password" name="password">
+                            </div>
+                        </td>
                     </tr>
                     <tr class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                        <td>confirm password</td>
-                        <td colspan="2"><input type="password" class="form-control" name="password_confirmation"></td>
+                        <td>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-fw fa-lock"></i></div>
+                                <input type="password" class="form-control" placeholder="confirm password" name="password_confirmation">
+                            </div>
+                        </td>
                     </tr>
                     <tr class="form-group">
-                        <td>role</td>
-                        <td colspan="2"><input type="text" class="form-control" placeholder="{{ $role->label }}" readonly></td>
+                        <td>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-fw fa-user-secret"></i></div>
+                                <input type="text" class="form-control" placeholder="{{ $role->label }}" readonly>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
                         <td>
@@ -71,7 +95,7 @@ lift | profile
                         </td>
                     </tr>
                     <tr class="form-group">
-                        <td colspan="3" class="text-center">
+                        <td class="text-center">
                             <button type="submit" class="btn btn-success-light btn-lg">
                                 <i class="fa fa-fw fa-floppy-o fa-2x"></i><br><small>save</small>
                             </button>  
