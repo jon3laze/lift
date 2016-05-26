@@ -8,30 +8,35 @@ lift | profile
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <div class="well text-center">
-            	<p>
-            	   @if($user->photos->count() < 1) 
-                        <img src="/uploads/default.jpg" class="img-circle" />
-                    @else
-                        <img src="{{ $user->photos()->where('active', 1)->get()[0]->full_path }}" class="img-circle" />
-                    @endif
-            	</p>
-                <hr>
-            	<div>
-            		<p>{{ $user->name }}</p> 
-                </div>
-                <hr>
-                <div>
-                	<p>{{ $user->email }}</p>
-                </div>
-                <hr>
-                <div>
-                	<p class="text-muted">{{ $role->label }}</p>
-                </div>
-                <hr>
-                <div>
-                	<span class="text-muted"><a class="btn btn-link btn-sm" href="{{ route('profile.edit', $user->id) }}"><i class="fa fa-pencil fa-2x"></i></a><br><small>edit</small></span>
-                </div>
+            <div class="table-responsive col-md-4 col-md-offset-4">
+                <table class="table table-condensed table-hover">
+                    <tr>
+                        <td class="text-center" colspan="2">
+                            @if($user->photos->count() < 1) 
+                                <img src="/uploads/default.jpg" class="img-circle" />
+                            @else
+                                <img src="{{ $user->photos()->where('active', 1)->get()[0]->full_path }}" class="img-circle" />
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-lg fa-fw fa-user"></i></td>
+                        <td>{{ $user->name }}</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-lg fa-fw fa-envelope"></i></td>
+                        <td>{{ $user->email }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-muted"><i class="fa fa-lg fa-fw fa-user-secret"></i></td>
+                        <td>{{ $role->label }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center" colspan="2">
+                            <span class="text-muted"><a class="btn btn-link btn-sm" href="{{ route('profile.edit', $user->id) }}"><i class="fa fa-pencil fa-2x"></i></a><br><small>edit</small></span>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>

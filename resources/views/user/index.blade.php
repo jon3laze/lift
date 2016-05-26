@@ -6,16 +6,12 @@ lift | users
 
 @section('content')
 <div class="container">
+    @include('user.search')
+    @include('user.breadcrumb')
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-        	@include('user.search')
-        	@include('user.breadcrumb')
         	<div class="table-responsive">
-                <table class="table table-hover">
-                    <tr>
-                        <th colspan="2" class="text-center">user</th>
-                        <th class="text-center">role</th>
-                    </tr>
+                <table class="table table-condensed table-hover">
                     @foreach($users as $user) 
                         <tr>
                             <td>
@@ -44,8 +40,8 @@ lift | users
 					@endif
                 </table>
             </div>
-            @include('user.breadcrumb')
         </div>
     </div>
+    @include('user.breadcrumb')
 </div>
 @endsection

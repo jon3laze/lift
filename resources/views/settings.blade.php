@@ -6,9 +6,9 @@ lift | settings
 
 @section('content')
 <div class="container">
+    @include('search')
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            @include('search')
             <div class="col-md-4 table-responsive">
                 <table class="table table-condensed table-hover">
                     <tr>
@@ -21,7 +21,7 @@ lift | settings
                     @foreach($users as $user)
                         <tr>
                             <td><img src="{{ $user->photos()->where('active', 1)->get()[0]->thumb_path }}" class="img-circle img-small" /></td>
-                            <td>{{ $user->name }}</a></td>
+                            <td><a href="{{ route('user.show', $user->id) }}">{{ $user->name }}</a></td>
                         </tr>
                     @endforeach
                     <tr>
