@@ -23,12 +23,12 @@ lift | profile
     </div>
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <div class="table-responsive col-md-8 col-md-offset-2">
+            <div class="table-responsive">
                 {!! Form::model($user, array('route' => array('profile.update', $user->id), 'files' => true, 'class' => 'form-horizontal')) !!}
                 {!! method_field('PATCH') !!}
                 <table class="table table-condensed table-hover">
                     <tr class="form-group">
-                        <td class="text-center" colspan="3">
+                        <td class="text-center">
                             @if($user->photos->count() < 1) 
                                 <img src="/uploads/default.jpg" class="img-circle" />
                             @else
@@ -42,28 +42,22 @@ lift | profile
                         </td>
                     </tr>
                     <tr class="form-group">
-                        <td>picture</td>
-                        <td colspan="2">{!! Form::file('photo') !!}</td>
+                        <td>{!! Form::file('photo') !!}</td>
                     </tr>
                     <tr class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                        <td>name</td>
-                        <td colspan="2">{!! Form::text('name', $user->name, ['class' => 'form-control']) !!}</td>
+                        <td>{!! Form::text('name', $user->name, ['class' => 'form-control']) !!}</td>
                     </tr>
                     <tr class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                        <td>email</td>
-                        <td colspan="2">{!! Form::email('email', $user->email, ['class' => 'form-control']) !!}</td>
+                        <td>{!! Form::email('email', $user->email, ['class' => 'form-control']) !!}</td>
                     </tr>
                     <tr class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                        <td>password</td>
-                        <td colspan="2"><input type="password" class="form-control" name="password"></td>
+                        <td><input type="password" class="form-control" placeholder="password" name="password"></td>
                     </tr>
                     <tr class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                        <td>confirm password</td>
-                        <td colspan="2"><input type="password" class="form-control" name="password_confirmation"></td>
+                        <td><input type="password" class="form-control" placeholder="confirm password" name="password_confirmation"></td>
                     </tr>
                     <tr class="form-group">
-                        <td>role</td>
-                        <td colspan="2"><input type="text" class="form-control" placeholder="{{ $role->label }}" readonly></td>
+                        <td><input type="text" class="form-control" placeholder="{{ $role->label }}" readonly></td>
                     </tr>
                     <tr>
                         <td>
@@ -71,9 +65,9 @@ lift | profile
                         </td>
                     </tr>
                     <tr class="form-group">
-                        <td colspan="3" class="text-center">
+                        <td class="text-center">
                             <button type="submit" class="btn btn-success-light btn-lg">
-                                <i class="fa fa-fw fa-floppy-o fa-2x"></i><br><small>save&nbsp;</small>
+                                <i class="fa fa-fw fa-floppy-o fa-2x"></i><br><small>save</small>
                             </button>  
 
                             <a class="btn btn-danger-light btn-lg" href="{{ route('profile.index') }}">
