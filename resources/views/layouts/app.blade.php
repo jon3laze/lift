@@ -89,7 +89,7 @@
                         </li>
                     @endforeach
                     <li role="presentation" class="{{Request::path() == 'settings' ? 'active' : ''}}">
-                        <a href="{{ url('/settings') }}">
+                        <a href="{{ route('settings') }}">
                             <i class="fa fa-cog" aria-hidden="true"></i>
                         </a>
                     </li>

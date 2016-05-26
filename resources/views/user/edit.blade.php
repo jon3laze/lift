@@ -1,13 +1,16 @@
 @extends('layouts.app')
 
 @section('title')
-lift | $user->name
+lift | {{ $user->name }}
 @endsection
 
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
+            @include('user.search')
+            @include('user.breadcrumb')
+            
             <div class="well">
                 {!! Form::model($user, array('route' => array('user.update', $user->id), 'files' => true, 'class' => 'form-horizontal')) !!}
                 {!! method_field('PATCH') !!}
@@ -15,9 +18,9 @@ lift | $user->name
                 <div class="form-group">
                     <div class="col-md-6 col-md-offset-5">
                         @if($user->photos->count() < 1) 
-							<img src="/uploads/default_thumbnail.jpg" class="img-circle" />
+							<img src="/uploads/default.jpg" class="img-circle" />
 						@else
-							<img src="{{ $user->photos()->where('active', 1)->get()[0]->thumb_path }}" class="img-circle" />
+							<img src="{{ $user->photos()->where('active', 1)->get()[0]->full_path }}" class="img-circle" />
 						@endif
                     </div>
                 </div>
@@ -75,6 +78,7 @@ lift | $user->name
                     </div>
                 </div>
             </div>
+            @include('user.breadcrumb')
         </div>
     </div>
 </div>

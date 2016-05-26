@@ -8,12 +8,9 @@ lift | users
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
+        	@include('user.search')
+        	@include('user.breadcrumb')
             <div class="well">
-            	<div class="input-group">
-					<span class="input-group-addon"><i class="fa fa-fw fa-user"></i></span>
-					<input type="text" class="form-control" placeholder="user search">
-				</div>
-				<hr>
 				<ul class="fa-ul">
 					@foreach($users as $user) 
 						<li>
@@ -34,6 +31,7 @@ lift | users
 				</ul>
 
             </div>
+            @include('user.breadcrumb')
         </div>
     </div>
 </div>
