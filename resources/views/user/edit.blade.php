@@ -23,6 +23,11 @@ lift | {{ $user->name }}
                             @endif
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                            <hr>
+                        </td>
+                    </tr>
                     <tr class="form-group">
                         <td>picture</td>
                         <td colspan="2">{!! Form::file('photo') !!}</td>
@@ -47,17 +52,20 @@ lift | {{ $user->name }}
                         <td>role</td>
                         <td colspan="2"><input type="text" class="form-control" placeholder="{{ $role->label }}" readonly></td>
                     </tr>
-                    <tr class="form-group">
-                        <td></td>
-                        <td class="text-center">
-                            <a class="btn btn-link btn-sm" href="{{ route('user.show', $user->id) }}">
-                                <i class="fa fa-ban fa-2x"></i><br><small>cancel</small>
-                            </a>
-                        </td>
+                    <tr>
                         <td>
-                            <button type="submit" class="btn btn-link btn-sm">
-                                <i class="fa fa-floppy-o fa-2x"></i><br><small>save</small>
+                            <hr>
+                        </td>
+                    </tr>
+                    <tr class="form-group">
+                        <td colspan="3" class="text-center">
+                            <button type="submit" class="btn btn-success-light btn-lg">
+                                <i class="fa fa-floppy-o fa-fw fa-2x"></i><br><small>save&nbsp;</small>
                             </button>
+
+                            <a class="btn btn-danger-light btn-lg" href="{{ route('user.show', $user->id) }}">
+                                <i class="fa fa-ban fa-fw fa-2x"></i><br><small>cancel</small>
+                            </a>
                         </td>
                     </tr>
                 </table>

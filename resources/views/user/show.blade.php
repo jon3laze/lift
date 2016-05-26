@@ -32,7 +32,7 @@ lift | {{ $user->name }}
                     </tr>
                     <tr>
                         <td class="text-center">
-                            <span class="text-muted"><a class="btn btn-link btn-sm" href="{{ route('user.edit', $user->id) }}"><i class="fa fa-pencil fa-2x"></i></a><br><small>edit</small></span>
+                            <span class="text-muted"><a class="btn btn-primary-light btn-lg" href="{{ route('user.edit', $user->id) }}"><i class="fa fa-fw fa-pencil fa-2x"></i></a><br><small>edit</small></span>
                         </td>
                     </tr>
                 </table>
