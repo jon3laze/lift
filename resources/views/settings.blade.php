@@ -8,45 +8,66 @@ lift | settings
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <div class="col-md-4 well">
-                <a href="{{ route('user.index') }}" class="btn btn-link btn-lg btn-block">
-                    <i class="fa fa-fw fa-user"></i><br>users
-                </a>
-                <hr>
-                <ul class="fa-ul">
+            @include('search')
+            <div class="col-md-4 table-responsive">
+                <table class="table table-condensed table-hover">
+                    <tr>
+                        <th colspan="2">
+                            <a href="{{ route('user.index') }}" class="btn btn-link btn-lg btn-block">
+                                <i class="fa fa-2x fa-fw fa-users"></i><br>users
+                            </a>
+                        </th>
+                    </tr>
                     @foreach($users as $user)
-                        <li><a href="user/{{ $user->id }}"><i class="fa fa-fw fa-user"></i> {{ $user->name }}</a></li>
+                        <tr>
+                            <td><img src="{{ $user->photos()->where('active', 1)->get()[0]->thumb_path }}" class="img-circle img-small" /></td>
+                            <td>{{ $user->name }}</a></td>
+                        </tr>
                     @endforeach
-                    <hr>
-                    <li class="pull-right"><a href="{{ route('user.index') }}"><small><i class="fa fa-fw fa-users"></i> view all users</small></a></li>
-                </ul>
+                    <tr>
+                        <td colspan="2" class="text-right"><a href="{{ route('user.index') }}"><small><br><i class="fa fa-fw fa-users"></i> view all users</small></a></td>
+                    </tr>
+                </table>
             </div>
-            <div class="col-md-4 well">
-                <button type="button" class="btn btn-link btn-lg btn-block">
-                    <i class="fa fa-fw fa-user-secret"></i><br>roles
-                </button>
-                <hr>
-                <ul class="fa-ul">
+            <div class="col-md-4 table-responsive">
+                <table class="table table-condensed table-hover">
+                    <tr>
+                        <th colspan="2">
+                            <a href="#role" class="btn btn-link btn-lg btn-block">
+                                <i class="fa fa-2x fa-fw fa-user-secret"></i><br>roles
+                            </a>
+                        </th>
+                    </tr>
                     @foreach($roles as $role)
-                        <li><a href="role/{{ $role->id }}"><i class="fa fa-fw fa-user-secret"></i> {{ $role->name }}</a></li>
+                        <tr>
+                            <td><i class="fa fa-lg fa-fw fa-user-secret"></i></td>
+                            <td><a href="role/{{ $role->id }}">{{ $role->name }}</a></td>
+                        </tr>
                     @endforeach
-                    <li>&nbsp;</li>
-                    <hr>
-                    <li class="pull-right"><a href="role/"><small><i class="fa fa-fw fa-users"></i> view all roles</small></a></li>
-                </ul>
+                    <tr>
+                        <td colspan="2" class="text-right"><a href="#roles"><small><br><i class="fa fa-fw fa-user-secret"></i> view all roles</small></a></td>
+                    </tr>
+                </table>
             </div>
-            <div class="col-md-4 well">
-                <button type="button" class="btn btn-link btn-lg btn-block">
-                    <i class="fa fa-fw fa-lock"></i><br>permissions
-                </button>
-                <hr>
-                <ul class="fa-ul">
+            <div class="col-md-4 table-responsive">
+                <table class="table table-condensed table-hover">
+                    <tr>
+                        <th colspan="2">
+                            <a href="#permission" class="btn btn-link btn-lg btn-block">
+                                <i class="fa fa-2x fa-fw fa-lock"></i><br>permissions
+                            </a>
+                        </th>
+                    </tr>
                     @foreach($permissions as $permission)
-                        <li><a href="permission/{{ $permission->id }}"><i class="fa fa-fw fa-lock"></i> {{ $permission->name }}</a></li>
+                        <tr>
+                            <td><i class="fa fa-lg fa-fw fa-lock"></i></td>
+                            <td><a href="permission/{{ $permission->id }}">{{ $permission->name }}</a></td>
+                        </tr>
                     @endforeach
-                    <hr>
-                    <li class="pull-right"><a href="permission/"><small><i class="fa fa-fw fa-lock"></i> view all permisions</small></a></li>
-                </ul>
+                    <tr>
+                        <td colspan="2" class="text-right"><a href="#permissions"><small><br><i class="fa fa-fw fa-lock"></i> view all permissions</small></a></td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
