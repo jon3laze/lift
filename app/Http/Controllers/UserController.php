@@ -6,9 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Module;
-use App\Photo;
 use App\User;
-use Image;
 use File;
 use Auth;
 
@@ -21,6 +19,7 @@ class UserController extends Controller
      */
     public function __construct()
     {
+        parent::__construct();
         $this->middleware('auth');
     }
 
@@ -31,10 +30,8 @@ class UserController extends Controller
      */
     public function index() 
     {
-    	$modules = Module::all();
         $users = User::orderBy('name', 'ASC')->paginate(20);
         return view('user.index')
-        ->with('modules', $modules)
         ->with('users', $users);
     }
 
@@ -45,10 +42,8 @@ class UserController extends Controller
      */
     public function show(User $user) 
     {
-        $modules = Module::all();
         $role = $user->roles()->get()[0];
         return view('user.show')
-        ->with('modules', $modules)
         ->with('user', $user)
         ->with('role', $role);
     }
@@ -60,10 +55,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $modules = Module::all();
         $role = $user->roles()->get()[0];
         return view('user.edit')
-        ->with('modules', $modules)
         ->with('user', $user)
         ->with('role', $role);
     }
@@ -78,7 +71,7 @@ class UserController extends Controller
         $user = User::find($id);
 
         if($request->hasFile('photo')) {
-            $user->photos()->save($this->photo($request->file('photo'), $id));
+            $user->photos()->save($user->savePhoto($request->file('photo'), $id));
         }
         if($request->name !== $user->name) {
             $user->update(['name' => $request->name]);
@@ -91,47 +84,9 @@ class UserController extends Controller
                 $user->update(['password' => bcrypt($request->password)]);
             }    
         }
-        $modules = Module::all();
         $role = $user->roles()->get()[0];
         return view('user.show')
-        ->with('modules', $modules)
         ->with('user', $user)
         ->with('role', $role);   
-    }
-
-    private function photo($request, $id)
-    {
-        $directory = public_path().'/uploads/'.$id;
-        $full_name = '/u'.$id.date('m-d-Y_hia').'.jpg';
-        $thumb_name = '/u'.$id.date('m-d-Y_hia').'_thumbnail.jpg';
-
-        if(!is_dir($directory)) {
-            File::makeDirectory($directory, 0755, true, false);
-        }
-
-        $image = Image::make($request)
-            ->resize(150, null, function($constraint) {
-                $constraint->aspectRatio();
-            })
-            ->save($directory.$full_name);
-
-        $thumbnail = Image::make($request)
-            ->resize(50, null, function($constraint) {
-                $constraint->aspectRatio();
-            })
-            ->save($directory.$thumb_name);
-
-        $photos = Photo::where('user_id', '=', $id);
-        if($photos) {
-            $photos->update(['active' => false]);
-        }
-
-        $photo = new Photo;
-        $photo->user_id = $id;
-        $photo->full_path = '/uploads/'.$id.$full_name;
-        $photo->thumb_path = '/uploads/'.$id.$thumb_name;
-        $photo->active = true;
-
-        return $photo;
     }
 }
