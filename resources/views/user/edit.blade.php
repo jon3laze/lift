@@ -42,13 +42,13 @@ lift | {{ $user->name }}
                 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                     <div class="input-group">
                         <div class="input-group-addon"><i class="fa fa-lg fa-fw fa-lock"></i></div>
-                        <input type="password" class="form-control" name="password">
+                        <input type="password" class="form-control" placeholder="password" name="password">
                     </div>
                 </div>
                 <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                     <div class="input-group">
                         <div class="input-group-addon"><i class="fa fa-lg fa-fw fa-lock"></i></div>
-                        <input type="password" class="form-control" name="password_confirmation">
+                        <input type="password" class="form-control" placeholder="confirm password" name="password_confirmation">
                     </div>
                 </div>
                 <div class="form-group">
