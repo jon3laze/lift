@@ -10,7 +10,7 @@ lift | users
     @include('user.breadcrumb')
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-        	<div class="table-responsive">
+        	<div class="col-md-6 col-md-offset-2">
                 <table class="table table-condensed table-hover">
                     @foreach($users as $user) 
                         <tr>

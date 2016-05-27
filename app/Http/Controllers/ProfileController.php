@@ -5,11 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Module;
-use App\Permission;
 use App\Role;
 use App\User;
-use File;
 use Auth;
 
 class ProfileController extends Controller
@@ -33,30 +30,26 @@ class ProfileController extends Controller
     public function index() 
     {
         $user = User::find(Auth::id());
-        $role = $user->roles()->get()[0];
         return view('profile.index')
-        ->with('user', $user)
-        ->with('role', $role);
+        ->with('user', $user);
     }
 
     /**
      * Edit single user profile
      *
-     * @return $user
+     * @return $user, $roles
      */
     public function edit()
     {
         $user = User::find(Auth::id());
-        $role = $user->roles()->get()[0];
         return view('profile.edit')
-        ->with('user', $user)
-        ->with('role', $role);
+        ->with('user', $user);
     }
 
      /**
      * Update single user profile
      *
-     * @return $modules, $user, $role
+     * @return $user
      */
      public function update(Request $request)
     {
@@ -76,9 +69,8 @@ class ProfileController extends Controller
                 $user->update(['password' => bcrypt($request->password)]);
             }    
         }
-        $role = $user->roles()->get()[0];
+
         return view('user.show')
-        ->with('user', $user)
-        ->with('role', $role);   
+        ->with('user', $user);   
     }
 }

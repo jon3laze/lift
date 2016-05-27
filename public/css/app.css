@@ -8,19 +8,19 @@
 .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
   border-top: 0px; }
 
-.btn-success-light {
+.thumbton-success {
   border-color: #d6e9c6;
   background-color: #dff0d8;
   color: #3c763d;
   width: 88px; }
 
-.btn-danger-light {
+.thumbton-danger {
   border-color: #ebccd1;
   background-color: #f2dede;
   color: #a94442;
   width: 88px; }
 
-.btn-primary-light {
+.thumbton-primary {
   border-color: #bce8f1;
   background-color: #d9edf7;
   color: #31708f;

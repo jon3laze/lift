@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Module;
+use App\Role;
 use App\User;
-use File;
 use Auth;
 
 class UserController extends Controller
@@ -26,7 +25,7 @@ class UserController extends Controller
     /**
      * Show list of users
      *
-     * @return $modules, $users
+     * @return $users
      */
     public function index() 
     {
@@ -38,33 +37,34 @@ class UserController extends Controller
     /**
      * Show single user
      *
-     * @return $modules, $user, $role
+     * @return $user
      */
     public function show(User $user) 
     {
-        $role = $user->roles()->get()[0];
         return view('user.show')
-        ->with('user', $user)
-        ->with('role', $role);
+        ->with('user', $user);
     }
 
     /**
      * Edit single user
      *
-     * @return $modules, $user, $role
+     * @return $user, $roles
      */
     public function edit(User $user)
     {
-        $role = $user->roles()->get()[0];
+        $roles = array();
+        foreach(Role::all() as $role) {
+            $roles[$role->id] = $role->label;
+        }
         return view('user.edit')
         ->with('user', $user)
-        ->with('role', $role);
+        ->with('roles', $roles);
     }
 
     /**
      * Update user
      *
-     * @return $modules, $user, $role
+     * @return $user
      */
      public function update(Request $request, $id)
     {
@@ -84,9 +84,12 @@ class UserController extends Controller
                 $user->update(['password' => bcrypt($request->password)]);
             }    
         }
-        $role = $user->roles()->get()[0];
+        if($request->role !== $user->roles()->get()[0]->id) {
+            $user->roles()->detach($user->roles()->get()[0]);
+            $user->roles()->save(Role::find($request->role));
+        }
+
         return view('user.show')
-        ->with('user', $user)
-        ->with('role', $role);   
+        ->with('user', $user);   
     }
 }

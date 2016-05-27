@@ -36,10 +36,7 @@
 			@endif
 			@if(Request::is('user/*/edit'))
 				<li class="active text-muted">
-					<sub>
-						<i class="fa fa-fw fa-ellipsis-h" aria-hidden="true"></i>
-					</sub>
-					<i class="fa fa-fw fa-pencil" aria-hidden="true"></i>
+					<i class="fa fa-fw fa-pencil fa-flip-horizontal" aria-hidden="true"></i><sub>...</sub>
 				</li>
 			@endif
 		</ul>
