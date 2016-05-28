@@ -26,4 +26,10 @@
   color: #31708f;
   width: 88px; }
 
+@media screen and (max-width: 550px) {
+  .breadcrumb > li {
+    display: block; }
+  .breadcrumb > li + li:before {
+    content: none; } }
+
 /*# sourceMappingURL=app.css.map */

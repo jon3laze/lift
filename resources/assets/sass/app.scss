@@ -29,4 +29,13 @@
     width: 88px;
 }
 
+@media screen and (max-width: 550px) {
+    .breadcrumb>li {
+        display: block;
+    }
+    .breadcrumb>li+li:before {
+        content: none;
+    }
+}
+
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
