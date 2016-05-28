@@ -92,4 +92,16 @@ class UserController extends Controller
         return view('user.show')
         ->with('user', $user);   
     }
+
+    /**
+     * User search
+     *
+     * @return $users
+     */
+    public function search(Request $request)
+    {
+        $users = User::SearchByKeyword($request->u)->paginate(20);
+        return view('user.index')
+        ->with('users', $users);
+    }
 }

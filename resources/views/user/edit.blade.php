@@ -11,7 +11,12 @@ lift | {{ $user->name }}
     <div class="row">
         <div class="col-md-10 col-md-offset-1">    
             <div class="col-md-4 col-md-offset-4">
-                {!! Form::model($user, array('route' => array('user.update', $user->id), 'files' => true, 'class' => 'form-horizontal')) !!}
+                {!! Form::model($user, 
+                    array('route' => 
+                        array('user.update', $user->id), 
+                        'files' => true, 
+                        'class' => 'form-horizontal'
+                    )) !!}
                 {!! method_field('PATCH') !!}
                 <div class="form-group text-center">
                     @if($user->photos->count() < 1) 
@@ -42,13 +47,13 @@ lift | {{ $user->name }}
                 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                     <div class="input-group">
                         <div class="input-group-addon"><i class="fa fa-lg fa-fw fa-lock"></i></div>
-                        <input type="password" class="form-control" placeholder="password" name="password">
+                        {!! Form::password('password',  ['class' => 'form-control', 'placeholder' => 'password']) !!}
                     </div>
                 </div>
                 <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                     <div class="input-group">
                         <div class="input-group-addon"><i class="fa fa-lg fa-fw fa-lock"></i></div>
-                        <input type="password" class="form-control" placeholder="confirm password" name="password_confirmation">
+                        {!! Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'confirm password']) !!}
                     </div>
                 </div>
                 <div class="form-group">
@@ -67,6 +72,7 @@ lift | {{ $user->name }}
                         <i class="fa fa-ban fa-fw fa-2x"></i><br><small>cancel</small>
                     </a>
                 </div>
+                {!! Form::close() !!}
             </div>
         </div>
     </div>

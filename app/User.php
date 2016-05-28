@@ -74,4 +74,15 @@ class User extends Authenticatable
 
         return $photo;
     }
+
+    public function scopeSearchByKeyword($query, $keyword) 
+    {
+        if($keyword !== '') {
+            $query->where(function($query) use ($keyword) {
+                $query->where('name', 'like' , "%$keyword%")
+                    ->orWhere('email', 'like', "%$keyword%");
+            });
+        }
+        return $query;
+    }
 }

@@ -22,6 +22,7 @@ class DashboardController extends Controller
      */
     public function __construct()
     {
+        parent::__construct();
         $this->middleware('auth');
     }
 
@@ -61,9 +62,18 @@ class DashboardController extends Controller
         $users = User::orderBy('created_at', 'DESC')->paginate(5);
         $roles = Role::orderBy('name', 'ASC')->paginate(5);
         $permissions = Permission::orderBy('name', 'ASC')->paginate(5);
-    	$modules = Module::all();
     	return view('settings')
-            ->with('modules', $modules)
+            ->with('users', $users)
+            ->with('roles', $roles)
+            ->with('permissions', $permissions);
+    }
+
+    public function search(Request $request)
+    {
+        $users = User::SearchByKeyword($request->s)->paginate(20);
+        $roles = Role::SearchByKeyword($request->s)->paginate(20);
+        $permissions = Permission::SearchByKeyword($request->s)->paginate(20);
+        return view('settings')
             ->with('users', $users)
             ->with('roles', $roles)
             ->with('permissions', $permissions);

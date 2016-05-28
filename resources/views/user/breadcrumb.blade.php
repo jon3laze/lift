@@ -23,6 +23,7 @@
 		    @endif
 		    @if(Request::is('user/*'))
 			    <li class="{{ Request::is('user/*/*') ? '' : 'active text-muted' }}">
+			    @if(isset($user))
 			    	@if(Request::is('user/*/*'))
 			    		<a href="{{ route('user.show', $user->id) }}">
 			        		<i class="fa fa-user fa-fw" aria-hidden="true"></i>
@@ -32,6 +33,7 @@
 			        	<i class="fa fa-user fa-fw" aria-hidden="true"></i>
 			        	{{ $user->name }}
 			        @endif
+			    @endif
 			    </li>
 			@endif
 			@if(Request::is('user/*/edit'))

@@ -61,6 +61,7 @@ lift | profile
                         <br><small>cancel</small>
                     </a>
                 </div>
+                {!! Form::close() !!}
             </div>
         </div>
     </div>

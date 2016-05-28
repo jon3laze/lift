@@ -13,7 +13,9 @@
 Route::auth();
 Route::group(['middleware' => 'web'], function() {	
 	Route::resource('profile', 'ProfileController');
+	Route::get('user/search', 'UserController@search')->name('user.search');
 	Route::resource('user', 'UserController');
+	Route::get('settings/search', 'DashboardController@search')->name('settings.search');
 	Route::get('/settings', 'DashboardController@settings')->name('settings');
 	Route::get('/', 'DashboardController@index');
 	Route::get('/{modules}', 'DashboardController@modules');
