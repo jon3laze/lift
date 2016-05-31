@@ -17,6 +17,7 @@ class CreateModulesTable extends Migration
             $table->string('name');
             $table->string('label');
             $table->string('icon');
+            $table->boolean('default');
             $table->timestamps();
         });
     }

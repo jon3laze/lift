@@ -13,52 +13,76 @@ class PermissionsTableSeeder extends Seeder
     {
         $permissionSeeds = array(
             [
-                'name' => 'user_view',
+                'name' => 'view',
+                'module_id' => '1',
                 'label' => 'View Users',
+                'icon' => 'fa-eye',
             ],
             [
-                'name' => 'user_edit',
+                'name' => 'edit',
+                'module_id' => '1',
                 'label' => 'Edit Users',
+                'icon' => 'fa-pencil',
             ],
             [
-                'name' => 'user_create',
+                'name' => 'create',
+                'module_id' => '1',
                 'label' => 'Create Users',
+                'icon' => 'fa-plus'
             ],
             [
-                'name' => 'user_delete',
+                'name' => 'delete',
+                'module_id' => '1',
                 'label' => 'Delete Users',
+                'icon' => 'fa-minus',
             ],
             [
-                'name' => 'role_view',
+                'name' => 'view',
+                'module_id' => '2',
                 'label' => 'View Roles',
+                'icon' => 'fa-eye',
             ],
             [
-                'name' => 'role_edit',
+                'name' => 'edit',
+                'module_id' => '2',
                 'label' => 'Edit Roles',
+                'icon' => 'fa-pencil',
             ],
             [
-                'name' => 'role_create',
+                'name' => 'create',
+                'module_id' => '2',
                 'label' => 'Create Roles',
+                'icon' => 'fa-plus'
             ],
             [
-                'name' => 'role_delete',
+                'name' => 'delete',
+                'module_id' => '2',
                 'label' => 'Delete Roles',
+                'icon' => 'fa-minus',
             ],
             [
-                'name' => 'permission_view',
+                'name' => 'view',
+                'module_id' => '3',
                 'label' => 'View Permissions',
+                'icon' => 'fa-eye',
             ],
             [
-                'name' => 'permission_edit',
+                'name' => 'edit',
+                'module_id' => '3',
                 'label' => 'Edit Permissions',
+                'icon' => 'fa-pencil',
             ],
             [
-                'name' => 'permission_create',
+                'name' => 'create',
+                'module_id' => '3',
                 'label' => 'Create Permissions',
+                'icon' => 'fa-plus'
             ],
             [
-                'name' => 'permission_delete',
+                'name' => 'delete',
+                'module_id' => '3',
                 'label' => 'Delete Permissions',
+                'icon' => 'fa-minus',
             ]
         );
         DB::table('permissions')->insert($permissionSeeds);

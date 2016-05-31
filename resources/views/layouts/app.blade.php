@@ -81,12 +81,14 @@
                         </a>
                     </li>
                     @foreach($modules as $modules)
-                        <li role="presentation" class="{{Request::path() == $modules->name ? 'active' : ''}}">
-                            <a href="/{{$modules->name}}">
-                                <i class="fa {{$modules->icon}}" aria-hidden="true"></i>
-                                {{$modules->name}}
-                            </a>
-                        </li>
+                        @if(!$modules->default)
+                            <li role="presentation" class="{{Request::path() == $modules->name ? 'active' : ''}}">
+                                <a href="/{{$modules->name}}">
+                                    <i class="fa {{$modules->icon}}" aria-hidden="true"></i>
+                                    {{$modules->name}}
+                                </a>
+                            </li>
+                        @endif
                     @endforeach
                     <li role="presentation" class="{{Request::path() == 'settings' ? 'active' : ''}}">
                         <a href="{{ route('settings') }}">

@@ -39,14 +39,14 @@ lift | settings
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading text-center">
-                        <a href="#role">
+                        <a href="{{ route('role.index') }}">
                             <i class="fa fa-fw fa-user-secret"></i>roles
                         </a>
                     </div>
                     <div class="panel-body">
                         @foreach($roles as $role)
-                            <div class="row rb-hover">
-                                <a href="role/{{ $role->id }}">
+                            <div class="row tb-hover">
+                                <a href="{{ route('role.show', $role->id) }}">
                                     <i class="fa fa-lg fa-fw fa-user-secret"></i>
                                     {{ $role->name }}
                                 </a>
@@ -54,7 +54,7 @@ lift | settings
                         @endforeach
                     </div>
                     <div class="panel-footer text-right">
-                        <a href="#roles">
+                        <a href="{{ route('role.index') }}">
                             <span class="small">
                                 <i class="fa fa-fw fa-user-secret"></i> view all roles
                             </span>
@@ -65,13 +65,13 @@ lift | settings
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading text-center">
-                        <a href="#permission">
+                        <a href="{{ route('permission.index') }}">
                             <i class="fa fa-fw fa-lock"></i>permissions
                         </a>
                     </div>
                     <div class="panel-body">
                         @foreach($permissions as $permission)
-                            <div class="row rb-hover">
+                            <div class="row tb-hover">
                                 <a href="permission/{{ $permission->id }}">
                                     <i class="fa fa-lg fa-fw fa-lock"></i>
                                     {{ $permission->name }}
@@ -80,7 +80,7 @@ lift | settings
                         @endforeach
                     </div>
                     <div class="panel-footer text-right">
-                        <a href="#roles">
+                        <a href="{{ route('permission.index') }}">
                             <span class="small">
                                 <i class="fa fa-fw fa-lock"></i> view all permissions
                             </span>

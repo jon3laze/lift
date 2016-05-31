@@ -54,9 +54,15 @@ class UsersTableSeeder extends Seeder
 
         $directory = public_path().'/uploads/';
 
-        File::makeDirectory($directory.'1', 0755, true, false);
-        File::makeDirectory($directory.'2', 0755, true, false);
-        File::makeDirectory($directory.'3', 0755, true, false);
+        if(!is_dir($directory.'1')) {
+            File::makeDirectory($directory.'1', 0755, true, false);
+        }
+        if(!is_dir($directory.'2')) {
+            File::makeDirectory($directory.'2', 0755, true, false);
+        }
+        if(!is_dir($directory.'3')) {
+            File::makeDirectory($directory.'3', 0755, true, false);
+        }
 
         Image::make('https://randomuser.me/api/portraits/lego/1.jpg')->resize(150, null, function($constraint) {
             $constraint->aspectRatio();
@@ -83,7 +89,9 @@ class UsersTableSeeder extends Seeder
         for($i=4; $i<52; $i++) {
             $full_name = '/u'.$i.date('m-d-Y_hia').'.jpg';
             $thumb_name = '/u'.$i.date('m-d-Y_hia').'_thumbnail.jpg';
-            File::makeDirectory($directory.$i, 0755, true, false);
+            if(!is_dir($directory.$i)) {
+                File::makeDirectory($directory.$i, 0755, true, false);
+            }
             if($i%2) {
                 $image = Image::make('https://randomuser.me/api/portraits/women/'.$i.'.jpg')->resize(150, null, function($constraint) {
                     $constraint->aspectRatio();

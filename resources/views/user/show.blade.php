@@ -34,7 +34,11 @@ lift | {{ $user->name }}
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-addon"><i class="fa fa-lg fa-fw fa-user-secret"></i></div>
-                        <div class="form-control" readonly>{{ $user->roles()->get()[0]->label }}</div>
+                        @if($user->roles()->count() > 0)
+                            <div class="form-control" readonly>{{ $user->roles()->get()[0]->label }}</div>
+                        @else
+                            <div class="form-control" readonly>No role defined</div>
+                        @endif
                     </div>
                 </div>
                 <hr>

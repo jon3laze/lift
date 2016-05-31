@@ -1,51 +1,49 @@
 @extends('layouts.app')
 
 @section('title')
-lift | users
+lift | roles
 @endsection
 
 @section('content')
 <div class="container">
-    @include('user.search')
-    @include('user.breadcrumb')
+    @include('role.search')
+    @include('role.breadcrumb')
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            @if($users->count() == 0)
+            @if($roles->isEmpty())
                 <div class="row">
                         <div class="col-md-10 col-md-offset-1">  
-                            <blockquote>No users found.</blockquote>
+                            <blockquote>No roles found.</blockquote>
                         </div>
                 </div>
             @else
-                @foreach($users as $user) 
+                @foreach($roles as $role) 
                     <div class="row tb-hover">
-                        <a href="{{ route('user.show', $user->id) }}">
+                        <a href="{{ route('role.show', $role->id) }}">
                             <div class="col-md-1 col-md-offset-1">
-                            	@if($user->photos->count() < 1) 
-        							<i class="fa fa-lg fa-fw fa-user"></i>
-        						@else
-        							<img src="{{ $user->photos()->where('active', 1)->get()[0]->thumb_path }}" class="img-circle img-small" />
-        						@endif
+        						<i class="fa fa-lg fa-fw fa-user-secret"></i>
         					</div>
         					<div class="col-md-8">	
-        						<h5>{{ $user->name }} <small class="text-muted"> {{ $user->email }}</small></h5>
+        						<h5>{{ $role->label }}</h5>
         					</div>
                             <div class="col-md-2 text-right">
-                                <span class="label label-primary tb-label">{{ $user->roles()->get()[0]->name }}</span>
+                                @foreach($role->permissions()->orderBy('module_id', 'asc')->get()->unique('module_id') as $module)
+                                    <i class="fa fa-fw {{ $module->module()->get()[0]->icon }}"></i>
+                                @endforeach
                             </div>
                         </a>
                     </div>
                 @endforeach
             @endif
-            @if($users->links())
+            @if($roles->links())
             	<div class="row">
                     <div class="col-md-10 col-md-offset-1 text-center">
-            		  {{ $users->render() }}
+            		  {{ $roles->render() }}
                     </div>
             	</div>
 			@endif
         </div>
     </div>
-    @include('user.breadcrumb')
+    @include('role.breadcrumb')
 </div>
 @endsection

@@ -1,51 +1,47 @@
 @extends('layouts.app')
 
 @section('title')
-lift | users
+lift | permissions
 @endsection
 
 @section('content')
 <div class="container">
-    @include('user.search')
-    @include('user.breadcrumb')
+    @include('permission.search')
+    @include('permission.breadcrumb')
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            @if($users->count() == 0)
+            @if($permissions->isEmpty())
                 <div class="row">
                         <div class="col-md-10 col-md-offset-1">  
-                            <blockquote>No users found.</blockquote>
+                            <blockquote>No permissions found.</blockquote>
                         </div>
                 </div>
             @else
-                @foreach($users as $user) 
+                @foreach($permissions as $permission) 
                     <div class="row tb-hover">
-                        <a href="{{ route('user.show', $user->id) }}">
+                        <a href="{{ route('permission.show', $permission->id) }}">
                             <div class="col-md-1 col-md-offset-1">
-                            	@if($user->photos->count() < 1) 
-        							<i class="fa fa-lg fa-fw fa-user"></i>
-        						@else
-        							<img src="{{ $user->photos()->where('active', 1)->get()[0]->thumb_path }}" class="img-circle img-small" />
-        						@endif
+        						<i class="fa fa-lg fa-fw fa-lock"></i>
         					</div>
         					<div class="col-md-8">	
-        						<h5>{{ $user->name }} <small class="text-muted"> {{ $user->email }}</small></h5>
+        						<h5>{{ $permission->name }}</h5>
         					</div>
                             <div class="col-md-2 text-right">
-                                <span class="label label-primary tb-label">{{ $user->roles()->get()[0]->name }}</span>
+                                <span class="label label-primary tb-label">{{ $permission->label }}</span>
                             </div>
                         </a>
                     </div>
                 @endforeach
             @endif
-            @if($users->links())
+            @if($permissions->links())
             	<div class="row">
                     <div class="col-md-10 col-md-offset-1 text-center">
-            		  {{ $users->render() }}
+            		  {{ $permissions->render() }}
                     </div>
             	</div>
 			@endif
         </div>
     </div>
-    @include('user.breadcrumb')
+    @include('permission.breadcrumb')
 </div>
 @endsection
