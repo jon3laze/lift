@@ -16,15 +16,9 @@ class CreateRolesTables extends Migration
         Schema::create('permissions', function(Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('module_id')->nullable();
             $table->string('label')->nullable();
             $table->string('icon')->nullable();
             $table->timestamps();
-
-            $table->foreign('module_id')
-                ->references('id')
-                ->on('modules')
-                ->onDelete('cascade');
         });
 
         Schema::create('roles', function(Blueprint $table) {
@@ -76,7 +70,6 @@ class CreateRolesTables extends Migration
      */
     public function down()
     {
-        Schema::disableForeignKeyConstraints();
         Schema::drop('role_user');
         Schema::drop('permission_role');
         Schema::drop('roles');
