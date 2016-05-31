@@ -76,6 +76,7 @@ class CreateRolesTables extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::drop('role_user');
         Schema::drop('permission_role');
         Schema::drop('roles');

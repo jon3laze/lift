@@ -34,6 +34,7 @@ class CreatePhotosTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::drop('photos');
     }
 }
