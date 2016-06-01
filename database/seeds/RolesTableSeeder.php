@@ -29,6 +29,7 @@ class RolesTableSeeder extends Seeder
                 'label' => 'User',
             ]
         );
+        DB::table('roles')->truncate();
         DB::table('roles')->insert($roleSeeds);
     }
 }

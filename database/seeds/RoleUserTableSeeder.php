@@ -28,6 +28,7 @@ class RoleUserTableSeeder extends Seeder
                 array_push($roleSeeds, ['role_id' => 4, 'user_id' => $users[$i]->id]);
             }
         }
+        DB::table('role_user')->truncate();
         DB::table('role_user')->insert($roleSeeds);
     }
 }

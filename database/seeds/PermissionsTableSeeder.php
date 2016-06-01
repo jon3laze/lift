@@ -85,6 +85,7 @@ class PermissionsTableSeeder extends Seeder
                 'icon' => 'fa-minus',
             ]
         );
+        DB::table('permissions')->truncate();
         DB::table('permissions')->insert($permissionSeeds);
     }
 }
