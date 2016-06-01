@@ -54,6 +54,9 @@ class UsersTableSeeder extends Seeder
 
         $directory = public_path().'/uploads/';
 
+        if(!File::cleanDirectory($directory)) {
+            File::makeDirectory($directory, 0755, true, false);
+        }
         if(!is_dir($directory.'1')) {
             File::makeDirectory($directory.'1', 0755, true, false);
         }
