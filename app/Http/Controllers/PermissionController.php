@@ -32,6 +32,28 @@ class PermissionController extends Controller
         ->with('permissions', $permissions);
     }
 
+    /**
+     * Show single permission
+     *
+     * @return $permission
+     */
+    public function show(Permission $permission) 
+    {
+        return view('permission.show')
+        ->with('permission', $permission);
+    }
+
+    /**
+     * Edit single permission
+     *
+     * @return $permission
+     */
+    public function edit(Permission $permission)
+    {
+    	$permissions = Permission::all();
+        return view('permission.edit')
+        ->with('permission', $permission);
+    }
 
 
 
