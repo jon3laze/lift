@@ -18,7 +18,6 @@ class PermissionRoleTableSeeder extends Seeder
         foreach($permissions as $permission) {
             array_push($permissionRoleSeeds, array('permission_id' => $permission->id, 'role_id' => '1'));
         }
-        DB::table('permission_role')->truncate();
         DB::table('permission_role')->insert($permissionRoleSeeds);
     }
 }

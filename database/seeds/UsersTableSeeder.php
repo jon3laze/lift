@@ -39,7 +39,6 @@ class UsersTableSeeder extends Seeder
                 array_push($userSeeds, ['name' => $faker->name('male'), 'email' => $faker->email, 'password' => bcrypt($faker->password)]);
             }
         }
-        DB::table('users')->truncate();
         DB::table('users')->insert($userSeeds);
     }
 }
